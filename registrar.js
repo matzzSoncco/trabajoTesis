@@ -20,7 +20,8 @@ const dbConfig = {
     host: 'desktop-9f68i6v',
     user: 'root', // reemplazar con el usuario de tu base de datos
     password: 'matz', // reemplazar con la contraseña de tu base de datos
-    database: 'tesis' //nombre de la base de datos
+    database: 'tesis', //nombre de la base de datos
+    port: '3307'
 };
 
 // Conectar a la base de datos
