@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registrarse</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="caja_login">
+		<div class="contenedor_login">
+			<p class="text-center" style="font-size: 80px;">
+				<i class="zmdi zmdi-account-circle"></i>
+			</p>
+			<p class="etiqueta_iniciar_sesion">Cree una cuenta</p>
+            <!-- Formulario de registro -->
+            <form action="/register" method="POST">
+                <div class="cuadro_inicio">
+                    <input class="ingresar" type="text" id="newUserName" name="newUsername" placeholder="User Name">
+                </div>
+                <div class="cuadro_inicio">
+                    <input class="ingresar" type="password" id="newPass" name="newPassword" placeholder="Password">
+                </div>
+                <button class="boton_inicio_sesion" style="color: #fff">Registrarse</button>
+            </form>
+            <p class="etiqueta_iniciar_sesion">¿No tienes una cuenta? Regístrate aquí:</p>
+		</div>
+	</div>
+</body>
+</html>
