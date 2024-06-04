@@ -13,14 +13,12 @@
 				<i class="zmdi zmdi-account-circle"></i>
 			</p>
 			<p class="etiqueta_iniciar_sesion">Ingrese su cuenta para ingresar</p>
-			<form action="login" method="POST">
+			<form action="/login" method="POST">
 				<div class="cuadro_inicio">
-				    <input class="ingresar" type="text" id="userName" name="username">
-				    <label class="etiqueta" for="userName">User Name</label>
+				    <input class="ingresar" type="text" id="userName" name="username" placeholder="Username">
 				</div>
 				<div class="cuadro_inicio">
-				    <input class="ingresar" type="password" id="pass" name="password">
-				    <label class="etiqueta" for="pass">Password</label>
+				    <input class="ingresar" type="password" id="pass" name="password" placeholder="Password">
 				</div>
 				<button class="boton_inicio_sesion" style="color: #fff">Ingresar</button>
 			</form>
