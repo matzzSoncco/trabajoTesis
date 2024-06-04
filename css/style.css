@@ -1,48 +1,47 @@
-/* Resetear estilos predeterminados */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Estilo para el contenedor principal */
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
 
-/* Estilo para el contenedor del formulario de inicio de sesión */
 .caja_login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .contenedor_login {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
     text-align: center;
 }
 
-/* Estilo para el ícono de usuario */
-.zmdi-account-circle {
-    font-size: 80px;
-    color: #4CAF50;
+/* Estilos para el icono */
+.text-center {
+    margin-bottom: 20px;
 }
 
-/* Estilos para los elementos de texto */
+/* Estilos para las etiquetas y enlaces */
+.etiqueta_iniciar_sesion,
+a {
+    color: #333;
+    text-decoration: none;
+}
+
 .etiqueta_iniciar_sesion {
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-/* Estilos para los cuadros de entrada y etiquetas */
+/* Estilos para los cuadros de inicio de sesión */
 .cuadro_inicio {
-    margin-top: 20px;
-    position: relative;
+    margin-bottom: 20px;
 }
 
 .ingresar {
@@ -50,30 +49,21 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.etiqueta {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: #777;
-    pointer-events: none;
-    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 /* Estilos para el botón de inicio de sesión */
 .boton_inicio_sesion {
-    background-color: #1423a1;
-    color: #fff;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
     border: none;
-    padding: 10px 20px;
     border-radius: 5px;
+    color: #fff;
     cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .boton_inicio_sesion:hover {
-    background-color: #0a156b;
+    background-color: #0056b3;
 }
