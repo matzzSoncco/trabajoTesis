@@ -1,0 +1,168 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para la sección de notificaciones */
+.container-notifications {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.NotificationArea {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.Notification {
+    display: block;
+    color: #0c0b0b;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.Notification:hover {
+    background-color: #f0f0f0;
+}
+
+.Notification-icon {
+    float: left;
+    margin-right: 10px;
+}
+
+.Notification-text {
+    overflow: hidden;
+}
+
+/* Estilos para la barra de navegación lateral */
+.navLateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #074940;
+    color: #fff;
+    padding-top: 50px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.navLateral-body-logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.navLateral-body-tittle-menu {
+    text-align: center;
+}
+
+.navLateral-body-tittle-menu img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.menu-principal {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-principal li {
+    margin-bottom: 5px;
+}
+
+.menu-principal a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.menu-principal a:hover {
+    background-color: #444;
+}
+
+.sub-menu-options {
+    display: none;
+}
+
+.btn-subMenu:hover .sub-menu-options {
+    display: block;
+}
+
+/* Estilos para el contenido de la página */
+.pageContent {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* Estilos para las fichas (tiles) */
+.tile {
+    width: calc(50% - 20px);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.tile-text {
+    text-align: center;
+    padding: 20px;
+}
+
+.tile-icon {
+    font-size: 40px;
+    color: #333;
+}
+
+/* Estilos para la línea de tiempo */
+.timeline-c {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.timeline-c-box {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.timeline-c-box-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.timeline-c-box-icon i {
+    color: #fff;
+    font-size: 24px;
+}
+
+.timeline-c-box-content {
+    padding-left: 60px;
+}
+
+.timeline-date {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    color: #777;
+    font-size: 14px;
+}
