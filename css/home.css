@@ -1,168 +1,247 @@
-/* Estilos para el cuerpo de la página */
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-}
-
-/* Estilos para la sección de notificaciones */
-.container-notifications {
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-}
-
-.NotificationArea {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.Notification {
-    display: block;
-    color: #0c0b0b;
-    text-decoration: none;
-    padding: 10px;
-    margin-bottom: 5px;
-}
-
-.Notification:hover {
+    box-sizing: border-box;
     background-color: #f0f0f0;
 }
 
-.Notification-icon {
-    float: left;
-    margin-right: 10px;
+/* Full width class */
+.full-width {
+    width: 100%;
 }
 
-.Notification-text {
-    overflow: hidden;
-}
-
-/* Estilos para la barra de navegación lateral */
-.navLateral {
+/* Nav Lateral */
+.nav_izquierda {
+    width: 300px;
+    height: 100vh;
+    background-color: #34495e;
     position: fixed;
-    top: 0;
     left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #074940;
-    color: #fff;
-    padding-top: 50px;
-    overflow-y: auto;
-    z-index: 1000;
+    top: 0;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.navLateral-body {
+    padding: 20px;
 }
 
 .navLateral-body-logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 1.5em;
 }
 
 .navLateral-body-tittle-menu {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
 }
 
 .navLateral-body-tittle-menu img {
-    width: 80px;
     border-radius: 50%;
+    width: 80px;
+    height: 80px;
 }
 
-.menu-principal {
+.navLateral-body-tittle-menu span {
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-left: 15px;
+}
+
+.navLateral-body ul {
     list-style: none;
     padding: 0;
 }
 
-.menu-principal li {
-    margin-bottom: 5px;
+.navLateral-body ul li {
+    margin: 10px 0;
 }
 
-.menu-principal a {
-    display: block;
-    color: #fff;
+.navLateral-body ul li a {
     text-decoration: none;
-    padding: 10px;
+    color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
 }
 
-.menu-principal a:hover {
-    background-color: #444;
+.navLateral-body ul li a:hover {
+    background-color: #2980b9;
 }
 
-.sub-menu-options {
-    display: none;
+.navLateral-body ul li .navLateral-body-cl {
+    width: 30px;
 }
 
-.btn-subMenu:hover .sub-menu-options {
-    display: block;
+.navLateral-body ul li .navLateral-body-cr {
+    margin-left: 10px;
 }
 
-/* Estilos para el contenido de la página */
+.divider-menu-h {
+    height: 1px;
+    background-color: #95a5a6;
+    margin: 10px 0;
+}
+
+/* Page Content */
 .pageContent {
-    margin-left: 250px;
+    margin-left: 300px;
     padding: 20px;
 }
 
-/* Estilos para las fichas (tiles) */
+.navBar {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 10px 20px;
+    position: fixed;
+    width: calc(100% - 300px);
+    top: 0;
+    z-index: 9;
+}
+
+.navBar-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navBar-options-list {
+    display: flex;
+    align-items: center;
+}
+
+.navBar-options-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navBar-options-list li {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.navBar-options-list img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+/* Tiles */
 .tile {
-    width: calc(50% - 20px);
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: inline-block;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.3s;
+}
+
+.tile:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .tile-text {
-    text-align: center;
-    padding: 20px;
+    font-size: 1.5em;
 }
 
 .tile-icon {
-    font-size: 40px;
-    color: #333;
+    font-size: 2em;
+    color: #34495e;
 }
 
-/* Estilos para la línea de tiempo */
+/* Timeline */
 .timeline-c {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .timeline-c-box {
-    position: relative;
-    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    width: 80%;
+    display: flex;
     padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 .timeline-c-box-icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 15px;
-    background-color: #333;
+    font-size: 2em;
+    color: #ffffff;
     border-radius: 50%;
-}
-
-.timeline-c-box-icon i {
-    color: #fff;
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
 }
 
 .timeline-c-box-content {
-    padding-left: 60px;
+    flex-grow: 1;
+}
+
+.timeline-c-box-content h4 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.timeline-c-box-content p {
+    margin: 0;
 }
 
 .timeline-date {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    color: #777;
-    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+/* Colors for icons in timeline */
+.bg-info {
+    background-color: #3498db;
+}
+
+.bg-success {
+    background-color: #2ecc71;
+}
+
+.bg-primary {
+    background-color: #3498db;
+}
+
+.bg-danger {
+    background-color: #e74c3c;
+}
+
+/* Tooltips */
+.mdl-tooltip {
+    display: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .nav_izquierda {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .pageContent {
+        margin-left: 0;
+    }
+
+    .navBar {
+        width: 100%;
+    }
 }

@@ -70,7 +70,7 @@ app.post('/login', (req, res) => {
 
         // Si se encuentra un usuario con las credenciales proporcionadas, redirigir a la página de inicio
         if (results.length > 0) {
-            res.redirect('/home.html');
+            res.redirect('/index.html');
         } else {
             // Si las credenciales son incorrectas, redirigir al usuario de vuelta al formulario de inicio de sesión con un mensaje de error
             res.send('Credenciales incorrectas');
