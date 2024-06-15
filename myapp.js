@@ -40,7 +40,7 @@ app.post('/register', (req, res) => {
     const { newUsername, newPassword } = req.body;
 
     // Insertar los datos del nuevo usuario en la base de datos
-    const sql = 'INSERT INTO admin (nombre_usuario, contra  ) VALUES (?, ?)';
+    const sql = 'INSERT INTO admin (nombre_usuario, contra) VALUES (?, ?)';
     connection.query(sql, [newUsername, newPassword], (err, result) => {
         if (err) {
             console.error('Error al insertar datos en la base de datos: ', err);
@@ -70,7 +70,7 @@ app.post('/login', (req, res) => {
 
         // Si se encuentra un usuario con las credenciales proporcionadas, redirigir a la página de inicio
         if (results.length > 0) {
-            res.redirect('/index.html');
+            res.redirect('/home.html');
         } else {
             // Si las credenciales son incorrectas, redirigir al usuario de vuelta al formulario de inicio de sesión con un mensaje de error
             res.send('Credenciales incorrectas');

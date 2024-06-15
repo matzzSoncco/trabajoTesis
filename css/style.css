@@ -1,72 +1,94 @@
-/* Estilos generales */
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
-.caja_login {
+body::before {
+    content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/almacen.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px); /* Aplica el efecto de desenfoque */
+    z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido del body */
 }
 
-.contenedor_login {
+body > * {
+    position: relative;
+    z-index: 1; /* Asegura que el contenido del body esté encima del pseudo-elemento */
+}
+
+body::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+body::-webkit-scrollbar-track {
+    background: #34495e; /* Color de fondo de la pista de la barra de desplazamiento */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #ecf0f1; /* Color del pulgar de la barra de desplazamiento */
+    border-radius: 10px; /* Redondea las esquinas del pulgar */
+    border: 2px solid #34495e; /* Añade un borde alrededor del pulgar */
+}
+
+.caja {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
     text-align: center;
 }
 
-/* Estilos para el icono */
-.text-center {
-    margin-bottom: 20px;
+.formulario {
+    margin: 20px 0;
 }
 
-/* Estilos para las etiquetas y enlaces */
-.etiqueta_iniciar_sesion,
-a {
-    color: #333;
-    text-decoration: none;
+.etiqueta {
+    font-size: 1.2em;
+    margin: 10px 0;
 }
 
-.etiqueta_iniciar_sesion {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-/* Estilos para los cuadros de inicio de sesión */
-.cuadro_inicio {
-    margin-bottom: 20px;
+.cuadro {
+    margin: 10px 0;
 }
 
 .ingresar {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
-/* Estilos para el botón de inicio de sesión */
-.boton_inicio_sesion {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+.boton {
+    background-color: #3498db;
     border: none;
+    padding: 10px;
     border-radius: 5px;
-    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s;
+    width: 100%;
 }
 
-.boton_inicio_sesion:hover {
-    background-color: #0056b3;
+.boton:hover {
+    background-color: #2980b9;
 }
 
-/* Estilos para home */
+.link {
+    cursor: pointer;
+    color: #3498db;
+}
 
+.link:hover {
+    text-decoration: underline;
+}
