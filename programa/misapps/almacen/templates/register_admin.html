@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Register Admin{% endblock %}
+
+{% block content %}
+    <form class="formulario" method="post">
+        <h2>Registre a un nuevo administrador</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="enviar" type="submit">Crear cuenta</button>
+    </form>
+{% endblock %}

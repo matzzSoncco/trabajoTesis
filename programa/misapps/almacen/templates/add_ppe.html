@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Add PPE{% endblock %}
+
+{% block content %}
+    <form class="formulario" method="post">
+        <h2>Agregar Equipo de Protección Personal</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="agregar" type="submit">Agregar</button>
+    </form>
+{% endblock %}

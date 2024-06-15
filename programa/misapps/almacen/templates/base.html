@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inicio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido</h1>
+        <nav class="navegacionCabecera">
+            <ul>
+                <li class="listaCabecera"><a href="{% url 'home' %}">Inicio</a></li>
+                {% if user.is_authenticated %}
+                    <li class="listaCabecera"><a href="{% url 'ppe' %}">Equipos de Protección Personal</a></li>
+                    <li class="listaCabecera"><a href="{% url 'tool_list' %}">Herramientas</a></li>
+                    <li class="listaCabecera"><a href="{% url 'material_list' %}">Materiales</a></li>
+                    <li class="listaCabecera"><a href="{% url 'equipment_list' %}">Equipos</a></li>
+                    <li class="listaCabecera"><a href="{% url 'worker_list' %}">Trabajadores</a></li>
+                    <li class="listaCabecera"><a href="{% url 'exit' %}">Cerrar Sesión</a></li>
+                {% else %}
+                    <li class="listaCabecera"><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                    <li class="listaCabecera"><a href="{% url 'register_admin' %}">Crear cuenta nueva</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

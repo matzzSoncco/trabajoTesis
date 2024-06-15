@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}PPE{% endblock %}
+
+{% block content %}
+<h2 class="titulo">Equipos de Protección Personal</h2>
+<table class="tablaEPP">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Costo Unitario</th>
+            <th>Costo Total</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in epp %}
+        <tr>
+            <td>{{ item.idPpe }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.unitCost }}</td>
+            <td>{{ item.totalCost }}</td>
+            <td>{{ item.stock }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<nav class="agregar">
+    <ul>
+        <li><a href="{% url 'add_ppe' %}">Agregar</a></li>
+    </ul>
+</nav>
+{% endblock %}

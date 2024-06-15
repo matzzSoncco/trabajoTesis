@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Herramienta{% endblock %}
+
+{% block content %}
+    <form class="formulario" method="post">
+        <h2>Agregar Herramienta</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="agregar" type="submit">Agregar</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Equipment{% endblock %}
+
+{% block content %}
+<h2 class="titulo">Materiales</h2>
+<table class="tablaEPP">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in epp %}
+        <tr>
+            <td>{{ item.idMaterial }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.stock }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<nav class="agregar">
+    <ul>
+        <li><a href="{% url 'add_material' %}">Agregar Equipo</a></li>
+    </ul>
+</nav>
+{% endblock %}
