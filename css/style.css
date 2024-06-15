@@ -11,6 +11,7 @@ body {
 body::before {
     content: "";
     position: absolute;
+<<<<<<< HEAD
     top: auto;
     left: auto;
     width: 100%;
@@ -20,6 +21,16 @@ body::before {
     background-position: center;
     filter: blur(4px); /* Aplica el efecto de desenfoque */
     z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido del body */
+=======
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(212, 206, 206, 0.1);
+>>>>>>> 9b3c99eb991291161b47524993ff5e08a0907fde
 }
 
 body > * {
