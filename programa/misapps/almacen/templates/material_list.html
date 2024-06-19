@@ -12,6 +12,7 @@
                 <th>Cantidad</th>
                 <th>Stock</th>
                 <th>Archivo</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,15 @@
                         No archivo adjunto
                     {% endif %}
                 </td>
+                <!-- Se agrego el CRUD ..........-->
+                <td>
+                    <button class="edit-button" data-id="{{ material.idEquipment }}" data-name="{{ material.name }}" data-quantity="{{ material.quantity }}" data-stock="{{ material.stock }}">Editar</button>
+                    <form method="post" action="{% url 'delete_material' material.idEquipment %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+                <!-- ......................................  -->
             </tr>
             {% endfor %}
         </tbody>
@@ -37,4 +47,35 @@
             <li><a href="{% url 'add_material' %}">Agregar Material</a></li>
         </ul>
     </nav>
+    <!-- ..................... -->
+     <!-- Modal de Edición -->
+    <div id="editModal" style="display:none;">
+        <form method="post" enctype="multipart/form-data" id="editForm">
+            {% csrf_token %}
+            <input type="hidden" name="idEquipment" id="editId">
+            <label for="editName">Nombre:</label>
+            <input type="text" name="name" id="editName">
+            <label for="editQuantity">Cantidad:</label>
+            <input type="number" name="quantity" id="editQuantity">
+            <label for="editStock">Stock:</label>
+            <input type="number" name="stock" id="editStock">
+            <label for="editArchivo">Archivo:</label>
+            <input type="file" name="archivo" id="editArchivo">
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById('editId').value = button.dataset.id;
+                document.getElementById('editName').value = button.dataset.name;
+                document.getElementById('editQuantity').value = button.dataset.quantity;
+                document.getElementById('editStock').value = button.dataset.stock;
+                document.getElementById('editModal').style.display = 'block';
+                document.getElementById('editForm').action = '/material/edit/' + button.dataset.id + '/';
+            });
+        });
+    </script>
 {% endblock %}
+

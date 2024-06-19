@@ -11,6 +11,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Archivo</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,13 @@
                         No archivo adjunto
                     {% endif %}
                 </td>
+                <td>
+                    <button class="edit-button" data-id="{{ worker.idWorker }}" data-name="{{ worker.name }}" data-surname="{{ worker.surname }}">Editar</button>
+                    <form method="post" action="{% url 'delete_worker' worker.idWorker %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
@@ -35,4 +43,31 @@
             <li><a href="{% url 'add_worker' %}">Agregar Trabajador</a></li>
         </ul>
     </nav>
+    <!-- ............................... -->
+     <!-- Modal de Edición -->
+    <div id="editModal" style="display:none;">
+        <form method="post" enctype="multipart/form-data" id="editForm">
+            {% csrf_token %}
+            <input type="hidden" name="idWorker" id="editId">
+            <label for="editName">Nombre:</label>
+            <input type="text" name="name" id="editName">
+            <label for="editSurname">Apellido:</label>
+            <input type="text" name="surname" id="editSurname">
+            <label for="editArchivo">Archivo:</label>
+            <input type="file" name="archivo" id="editArchivo">
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById('editId').value = button.dataset.id;
+                document.getElementById('editName').value = button.dataset.name;
+                document.getElementById('editSurname').value = button.dataset.surname;
+                document.getElementById('editModal').style.display = 'block';
+                document.getElementById('editForm').action = '/worker/edit/' + button.dataset.id + '/';
+            });
+        });
+    </script>
 {% endblock %}

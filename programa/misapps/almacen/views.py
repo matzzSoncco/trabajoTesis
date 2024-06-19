@@ -41,20 +41,9 @@ def add_equipment(request):
         form = EquipmentForm()
     return render(request, 'add_equipment.html', {'form': form})
 
-#------------------------------------------------------------------------ Añadiendo el CRUD
-
-def equipment_create(request):
-    if request.method == 'POST':
-        form = EquipmentForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('equipment_list')
-    else:
-        form = EquipmentForm()
-    return render(request, 'equipment_form.html', {'form': form})
-
-def equipment_update(request, pk):
-    equipment = get_object_or_404(Equipment, pk=pk)
+#------------------------------------------------------------------------ Añadiendo el CRUD------
+def edit_equipment(request, id):
+    equipment = get_object_or_404(Equipment, pk=id)
     if request.method == 'POST':
         form = EquipmentForm(request.POST, request.FILES, instance=equipment)
         if form.is_valid():
@@ -62,14 +51,15 @@ def equipment_update(request, pk):
             return redirect('equipment_list')
     else:
         form = EquipmentForm(instance=equipment)
-    return render(request, 'equipment_form.html', {'form': form})
+    return render(request, 'equipment_list.html', {'form': form, 'edit': True, 'equipment': equipment})
 
-def equipment_delete(request, pk):
-    equipment = get_object_or_404(Equipment, pk=pk)
+def delete_equipment(request, id):
+    equipment = get_object_or_404(Equipment, pk=id)
     if request.method == 'POST':
         equipment.delete()
         return redirect('equipment_list')
-    return render(request, 'equipment_confirm_delete.html', {'equipment': equipment})
+    return render(request, 'equipment_list.html', {'equipment': equipment})
+
 #----------------------------------------------------------------------------Aun no funca
 
 
@@ -88,8 +78,8 @@ def add_material(request):
         form = MaterialForm()
     return render(request, 'add_material.html', {'form': form})
 #----------------------------------------------------------------Añadiendo CRUD-------
-def edit_material(request, pk):
-    material = get_object_or_404(Material, idEquipment=pk)
+def edit_material(request, id):
+    material = get_object_or_404(Material, pk=id)
     if request.method == 'POST':
         form = MaterialForm(request.POST, request.FILES, instance=material)
         if form.is_valid():
@@ -97,14 +87,14 @@ def edit_material(request, pk):
             return redirect('material_list')
     else:
         form = MaterialForm(instance=material)
-    return render(request, 'edit_material.html', {'form': form})
+    return render(request, 'material_list.html', {'form': form, 'edit': True, 'material': material})
 
-def delete_material(request, pk):
-    material = get_object_or_404(Material, idEquipment=pk)
+def delete_material(request, id):
+    material = get_object_or_404(Material, pk=id)
     if request.method == 'POST':
         material.delete()
         return redirect('material_list')
-    return render(request, 'delete_material.html', {'material': material})
+    return render(request, 'material_list.html', {'material': material})
 #----------------------------------------------------------------------------------
 
 def tool_list(request):
@@ -121,6 +111,8 @@ def add_tool(request):
         form = ToolForm()
     return render(request, 'add_tool.html', {'form': form})
 
+
+
 def worker_list(request):
     workers = Worker.objects.all()
     return render(request, 'worker_list.html', {'item': workers})
@@ -134,6 +126,25 @@ def add_worker(request):
     else:
         form = WorkerForm()
     return render(request, 'add_worker.html', {'form': form})
+#-----------------------------------------------------------------------------
+def edit_worker(request, id):
+    Worker = get_object_or_404(Worker, pk=id)
+    if request.method == 'POST':
+        form = WorkerForm(request.POST, request.FILES, instance=Worker)
+        if form.is_valid():
+            form.save()
+            return redirect('worker_list')
+        else:
+            form = WorkerForm(instance=Worker)
+            return render(request, 'worker_list.html', {'form': form, 'edit':True, 'worker': Worker})
+        
+def delete_worker(request, id):
+    Worker = get_object_or_404(Worker, pk=id)
+    if request.method == 'POST':
+        Worker.delete()
+        return redirect('worker_list')
+    return render(request, 'worker_list.html', {'worker': Worker})
+#-----------------------------------------------------------------------------
 
 def register_admin(request):
     if request.method == 'POST':
