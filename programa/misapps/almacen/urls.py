@@ -26,8 +26,8 @@ urlpatterns = [
     path('worker/', views.worker_list, name='worker_list'),
     path('worker/add/', views.add_worker, name='add_worker'),
     #-------------------------------------------------------------
-    path('worker/edit/<int:ide>', views.edit_worker, name='edit_worker'),
-    path('worker/delete/<int:id>', views.delete_worker, name='delete_worker'),
+    path('worker/edit/<int:id>/', views.edit_worker, name='edit_worker'),
+    path('worker/delete/<int:id>/', views.delete_worker, name='delete_worker'),
 
 
     path('register_admin/', register_admin, name='register_admin'),

@@ -128,22 +128,22 @@ def add_worker(request):
     return render(request, 'add_worker.html', {'form': form})
 #-----------------------------------------------------------------------------
 def edit_worker(request, id):
-    Worker = get_object_or_404(Worker, pk=id)
+    worker = get_object_or_404(Worker, pk=id)
     if request.method == 'POST':
-        form = WorkerForm(request.POST, request.FILES, instance=Worker)
+        form = WorkerForm(request.POST, request.FILES, instance=worker)
         if form.is_valid():
             form.save()
             return redirect('worker_list')
-        else:
-            form = WorkerForm(instance=Worker)
-            return render(request, 'worker_list.html', {'form': form, 'edit':True, 'worker': Worker})
-        
+    else:
+        form = WorkerForm(instance=worker)
+    return render(request, 'worker_list.html', {'form': form, 'edit': True, 'worker': worker})
+
 def delete_worker(request, id):
-    Worker = get_object_or_404(Worker, pk=id)
+    worker = get_object_or_404(Worker, pk=id)
     if request.method == 'POST':
-        Worker.delete()
+        worker.delete()
         return redirect('worker_list')
-    return render(request, 'worker_list.html', {'worker': Worker})
+    return render(request, 'worker_list.html', {'worker': worker})
 #-----------------------------------------------------------------------------
 
 def register_admin(request):
