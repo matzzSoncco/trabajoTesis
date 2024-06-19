@@ -39,12 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'misapps.almacen'
 ]
+#--------------------------------Se añadio media para subir el archivo-------
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',    
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -80,8 +83,8 @@ DATABASES = {
         'NAME': 'tesis',
         'USER': 'root',
         'HOST': 'localhost',
-        'PORT': '3307',
-        'PASSWORD': 'matz'
+        'PORT': '3306',
+        'PASSWORD': 'mysqlklis'
     }
 }
 
