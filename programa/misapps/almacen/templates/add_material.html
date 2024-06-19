@@ -3,7 +3,7 @@
 {% block title %}Agregar Material{% endblock %}
 
 {% block content %}
-    <form class="formulario" method="post">
+    <form class="formulario" method="post" enctype="multipart/form-data">
         <h2>Agregar Material</h2>
         {% csrf_token %}
         {{ form.as_p }}

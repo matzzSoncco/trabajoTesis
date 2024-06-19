@@ -31,12 +31,12 @@ class PpeForm(forms.ModelForm):
 class EquipmentForm(forms.ModelForm):
     class Meta:
         model = Equipment
-        fields = ['name', 'quantity', 'level', 'stock']
+        fields = ['name', 'quantity', 'level', 'stock', 'archivo']#Se añadio archivo
 
 class MaterialForm(forms.ModelForm):
     class Meta:
         model = Material
-        fields = ['name', 'quantity', 'stock']
+        fields = ['name', 'quantity', 'stock', 'archivo']
 
 class ToolForm(forms.ModelForm):
     class Meta:
@@ -46,4 +46,4 @@ class ToolForm(forms.ModelForm):
 class WorkerForm(forms.ModelForm):
     class Meta:
         model = Worker
-        fields = ['name', 'surname']
+        fields = ['name', 'surname', 'archivo']

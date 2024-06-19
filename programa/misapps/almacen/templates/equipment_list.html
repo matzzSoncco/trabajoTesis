@@ -3,32 +3,40 @@
 {% block title %}Equipment{% endblock %}
 
 {% block content %}
-<h2 class="titulo">Equipos</h2>
-<table class="tablaEPP">
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Nivel</th>
-            <th>Stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in epp %}
-        <tr>
-            <td>{{ item.idEquipment }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.level }}</td>
-            <td>{{ item.stock }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<nav class="agregar">
-    <ul>
-        <li><a href="{% url 'add_equipment' %}">Agregar Equipo</a></li>
-    </ul>
-</nav>
+    <h2 class="titulo">Equipos</h2>
+    <table class="tablaEPP">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Nivel</th>
+                <th>Stock</th>
+                <th>Archivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in equipment %}
+            <tr>
+                <td>{{ item.idEquipment }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.get_level_display }}</td>  <!-- Utiliza get_level_display para mostrar el nivel legible -->
+                <td>{{ item.stock }}</td>
+                <td>
+                    {% if item.archivo %}
+                        <a href="{{ item.archivo.url }}" target="_blank">Ver archivo</a>
+                    {% else %}
+                        No archivo adjunto
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav class="agregar">
+        <ul>
+            <li><a href="{% url 'add_equipment' %}">Agregar Equipo</a></li>
+        </ul>
+    </nav>
 {% endblock %}

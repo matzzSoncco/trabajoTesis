@@ -1,32 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %}Equipment{% endblock %}
+{% block title %}Lista de Materiales{% endblock %}
 
 {% block content %}
-<h2 class="titulo">Materiales</h2>
-<table class="tablaEPP">
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in epp %}
-        <tr>
-            <td>{{ item.idMaterial }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.stock }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<nav class="agregar">
-    <ul>
-        <li><a href="{% url 'add_material' %}">Agregar Equipo</a></li>
-    </ul>
-</nav>
+    <h2 class="titulo">Materiales</h2>
+    <table class="tablaEPP">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Stock</th>
+                <th>Archivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materials %}
+            <tr>
+                <td>{{ material.idMaterial }}</td>
+                <td>{{ material.name }}</td>
+                <td>{{ material.quantity }}</td>
+                <td>{{ material.stock }}</td>
+                <td>
+                    {% if material.archivo %}
+                        <a href="{{ material.archivo.url }}" target="_blank">Ver archivo</a>
+                    {% else %}
+                        No archivo adjunto
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav class="agregar">
+        <ul>
+            <li><a href="{% url 'add_material' %}">Agregar Material</a></li>
+        </ul>
+    </nav>
 {% endblock %}

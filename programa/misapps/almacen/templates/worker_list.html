@@ -1,30 +1,38 @@
 {% extends 'base.html' %}
 
-{% block title %}Equipment{% endblock %}
+{% block title %}Trabajadores{% endblock %}
 
 {% block content %}
-<h2 class="titulo">Trabajadores</h2>
-<table class="tablaEPP">
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in epp %}
-        <tr>
-            <td>{{ item.idEquipment }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.surname }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<nav class="agregar">
-    <ul>
-        <li><a href="{% url 'add_worker' %}">Agregar Equipo</a></li>
-    </ul>
-</nav>
+    <h2 class="titulo">Trabajadores</h2>
+    <table class="tablaEPP">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Archivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for worker in item %}  <!-- Cambiado 'workers' a 'item' porque así lo pasaste en el contexto -->
+            <tr>
+                <td>{{ worker.idWorker }}</td>  <!-- Cambiado 'idEquipment' a 'idWorker' -->
+                <td>{{ worker.name }}</td>
+                <td>{{ worker.surname }}</td>
+                <td>
+                    {% if worker.archivo %}
+                        <a href="{{ worker.archivo.url }}" target="_blank">Ver archivo</a>  <!-- Cambiado 'trabajador' a 'worker' -->
+                    {% else %}
+                        No archivo adjunto
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav class="agregar">
+        <ul>
+            <li><a href="{% url 'add_worker' %}">Agregar Trabajador</a></li>
+        </ul>
+    </nav>
 {% endblock %}
