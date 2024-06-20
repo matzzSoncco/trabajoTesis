@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import home, PersonalProtectionEquipment, add_ppe, register_admin, login, exit
 from . import views
+#-------------------------------------para poder visualizar los archivos
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', home, name='home'),
@@ -35,3 +38,6 @@ urlpatterns = [
     path('logout/', exit, name='exit'),
    
 ]
+#---------------------------------------------------------------------------------
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

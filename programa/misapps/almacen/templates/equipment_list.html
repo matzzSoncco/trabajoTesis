@@ -31,27 +31,33 @@
                         No archivo adjunto
                     {% endif %}
                 </td>
+                <!-- ...............................................  -->
                 <td>
-                    <button class="edit-button" data-id="{{ item.idEquipment }}" data-name="{{ item.name }}" data-quantity="{{ item.quantity }}" data-level="{{ item.level }}" data-stock="{{ item.stock }}">Editar</button>
-                    <form method="post" action="{% url 'delete_equipment' item.idEquipment %}" style="display:inline;">
+                    <button class="edit-button" data-id="{{ item.idEquipment }}" data-name="{{ item.name }}" data-quantity="{{ item.quantity }}" data-level="{{ item.level }}" data-stock="{{ item.stock }}">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <form method="post" action="{% url 'delete_equipment' item.idEquipment %}" style="display:inline;" onsubmit="return confirmDelete();">
                         {% csrf_token %}
-                        <button type="submit">Eliminar</button>
+                        <button type="submit">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>
                     </form>
                 </td>
+                
             </tr>
             {% endfor %}
         </tbody>
     </table>
     <nav class="agregar">
         <ul>
-            <li><a href="{% url 'add_equipment' %}">Agregar Equipo</a></li>
+            <li><a href="{% url 'add_equipment' %}"><i class="fas fa-plus"></i> Agregar Equipo</a></li>
         </ul>
     </nav>
 
     <!--   .............................   -->
        <!-- Modal de Edición -->
     <div id="editModal" style="display:none;">
-        <form method="post" enctype="multipart/form-data" id="editForm">
+        <form method="post" enctype="multipart/form-data" id="editForm" onsubmit="return confirmEdit();">
             {% csrf_token %}
             <input type="hidden" name="idEquipment" id="editId">
             <label for="editName">Nombre:</label>
@@ -85,6 +91,13 @@
                 document.getElementById('editForm').action = '/equipment/edit/' + button.dataset.id + '/';
             });
         });
+
+    function confirmDelete() {
+        return confirm("¿Esta seguro de eliminar este Equipo?");
+    }
+    function confirmEdit() {
+        return confirm("¿Esta seguro de que desea guardar los cambios de este material?");
+    }
     </script>
 
 

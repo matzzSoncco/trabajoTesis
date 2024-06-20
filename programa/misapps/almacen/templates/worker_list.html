@@ -3,7 +3,7 @@
 {% block title %}Trabajadores{% endblock %}
 
 {% block content %}
-    <h2 class="titulo">Trabajadores</h2>
+    <h2 class="titulo"> Trabajadores</h2>
     <table class="tablaEPP">
         <thead>
             <tr>
@@ -15,38 +15,44 @@
             </tr>
         </thead>
         <tbody>
-            {% for worker in item %}  <!-- Cambiado 'workers' a 'item' porque así lo pasaste en el contexto -->
+            {% for worker in item %}  
             <tr>
-                <td>{{ worker.idWorker }}</td>  <!-- Cambiado 'idEquipment' a 'idWorker' -->
+                <td>{{ worker.idWorker }}</td>  
                 <td>{{ worker.name }}</td>
                 <td>{{ worker.surname }}</td>
                 <td>
                     {% if worker.archivo %}
-                        <a href="{{ worker.archivo.url }}" target="_blank">Ver archivo</a>  <!-- Cambiado 'trabajador' a 'worker' -->
+                        <a href="{{ worker.archivo.url }}" target="_blank">Ver archivo</a>  
                     {% else %}
                         No archivo adjunto
                     {% endif %}
                 </td>
+                <!-- ..........................................  -->
                 <td>
-                    <button class="edit-button" data-id="{{ worker.idWorker }}" data-name="{{ worker.name }}" data-surname="{{ worker.surname }}">Editar</button>
-                    <form method="post" action="{% url 'delete_worker' worker.idWorker %}" style="display:inline;">
+                    <button class="edit-button" data-id="{{ worker.idWorker }}" data-name="{{ worker.name }}" data-surname="{{ worker.surname }}">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <form method="post" action="{% url 'delete_worker' worker.idWorker %}" style="display:inline;" onsubmit="return confirmDelete();">
                         {% csrf_token %}
-                        <button type="submit">Eliminar</button>
+                        <button type="submit">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>
                     </form>
                 </td>
+                
             </tr>
             {% endfor %}
         </tbody>
     </table>
     <nav class="agregar">
         <ul>
-            <li><a href="{% url 'add_worker' %}">Agregar Trabajador</a></li>
+            <li><a href="{% url 'add_worker' %}"><i class="fas fa-plus"></i> Agregar Trabajador</a></li>
         </ul>
     </nav>
     <!-- ............................... -->
      <!-- Modal de Edición -->
-    <div id="editModal" style="display:none;">
-        <form method="post" enctype="multipart/form-data" id="editForm">
+     <div id="editModal" style="display:none;">
+        <form method="post" enctype="multipart/form-data" id="editForm" onsubmit="return confirmEdit();">
             {% csrf_token %}
             <input type="hidden" name="idWorker" id="editId">
             <label for="editName">Nombre:</label>
@@ -69,5 +75,13 @@
                 document.getElementById('editForm').action = '/worker/edit/' + button.dataset.id + '/';
             });
         });
+
+        function confirmDelete() {
+            return confirm('¿Está seguro de que desea eliminar este trabajador?');
+        }
+
+        function confirmEdit() {
+            return confirm('¿Está seguro de que desea guardar los cambios de este trabajador?');
+        }
     </script>
 {% endblock %}
