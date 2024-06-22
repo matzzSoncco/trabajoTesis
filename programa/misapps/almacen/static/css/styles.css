@@ -1,7 +1,7 @@
 /* General styles */
 body {
     font-family: Arial, sans-serif;
-    background-image:  url('../img/almacen.jpg');
+    background-image: url('../img/almacen.jpg');
     margin: 0;
     padding: 0;
 }
@@ -305,9 +305,73 @@ main select {
     box-sizing: border-box; /* Incluir el borde en el tamaño total del elemento */
 }
 
-/* Media query para hacer el main más responsivo */
-@media (max-width: 600px) {
-    main {
-        padding: 15px; /* Ajuste de relleno para dispositivos móviles */
-    }
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija */
+    z-index: 1; /* Por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilita desplazamiento si es necesario */
+    background-color: rgb(0,0,0); /* Color de fondo con transparencia */
+    background-color: rgba(0,0,0,0.4); /* Color de fondo con transparencia */
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Centrará el modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del modal */
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos generales */
+nav.agregar {
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+/* Estilos para el formulario de búsqueda */
+form.buscar {
+    display: flex;
+    align-items: flex-start;
+}
+
+form.buscar input[type="text"] {
+    height: fit-content;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form.buscar button.buscar {
+    height: fit-content;
+    padding: 8px 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-left: 5px;
+    cursor: pointer;
 }

@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from .views import home, PersonalProtectionEquipment, add_ppe, register_admin, login, exit
 from . import views
@@ -14,7 +16,13 @@ urlpatterns = [
     path('tool/add/', views.add_tool, name='add_tool'),
     path('worker/', views.worker_list, name='worker_list'),
     path('worker/add/', views.add_worker, name='add_worker'),
+    path('loan/', views.loan_list, name='loan_list'),
+    path('loan/add/', views.add_loan, name='add_loan'),
     path('register_admin/', register_admin, name='register_admin'),
     path('login/', login, name='login'),
     path('logout/', exit, name='exit'),
+    
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

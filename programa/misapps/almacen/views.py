@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm
@@ -7,20 +6,25 @@ from .models.Ppe import Ppe
 from .models.Equipment import Equipment
 from .models.Worker import Worker
 from .models.Material import Material
+from .models.Loan import Loan
 from .models.Tool import Tool
-from .forms import AdminSignUpForm, PpeForm, MaterialForm, WorkerForm, EquipmentForm, ToolForm
+from .forms import AdminSignUpForm, PpeForm, MaterialForm, WorkerForm, EquipmentForm, ToolForm, LoanForm
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
 
 def PersonalProtectionEquipment(request):
-    epp = Ppe.objects.all()
-    return render(request, 'ppe.html', {'epp': epp})
+    query = request.GET.get('q')
+    if query:
+        epp = Ppe.objects.filter(name__icontains=query)
+    else:
+        epp = Ppe.objects.all()
+    return render(request, 'ppe.html', {'epp': epp, 'query': query})
 
 def add_ppe(request):
     if request.method == 'POST':
-        form = PpeForm(request.POST)
+        form = PpeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('ppe')
@@ -83,6 +87,20 @@ def add_worker(request):
     else:
         form = WorkerForm()
     return render(request, 'add_worker.html', {'form': form})
+
+def loan_list(request):
+    loans = Loan.objects.all()
+    return render(request, 'loan_list.html', {'loans': loans})
+
+def add_loan(request):
+    if request.method == 'POST':
+        form = LoanForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('loan_list')
+    else:
+        form = LoanForm()
+    return render(request, 'add_loan.html', {'form': form})
 
 def register_admin(request):
     if request.method == 'POST':

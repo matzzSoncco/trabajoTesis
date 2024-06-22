@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}Agregar Trabajador{% endblock %}
+{% block title %}Agregar Equipo{% endblock %}
 
 {% block content %}
     <form class="formulario" method="post">
-        <h2>Agregar Trabajador</h2>
+        <h2>Asignar elementos a Trabajador</h2>
         {% csrf_token %}
         {{ form.as_p }}
         <button class="agregar" type="submit">Agregar</button>
     </form>
     <script>
         $(function() {
-            $('#id_contractDate').datepicker({
+            $('#id_loanDate').datepicker({
+                dateFormat: 'yy-mm-dd'  // Ajusta el formato según tus necesidades
+            });
+            $('#id_returnLoanDate').datepicker({
                 dateFormat: 'yy-mm-dd'  // Ajusta el formato según tus necesidades
             });
         });

@@ -9,6 +9,7 @@ class Ppe(models.Model):
     unitCost = models.DecimalField(verbose_name=_('Costo Unitario'), default=0.0, null=False, max_digits=8, decimal_places=2)
     totalCost = models.DecimalField(verbose_name=_('Costo Unitario'), default=0.0, null=False, max_digits=10, decimal_places=2, editable=False)
     stock = models.IntegerField(null=False, default=0)
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.totalCost = self.unitCost * self.quantity

@@ -4,27 +4,42 @@
 
 {% block content %}
 <h2 class="titulo">Trabajadores</h2>
+<nav class="agregar">
+    <ul>
+        <li><a href="{% url 'add_worker' %}">Agregar Trabajador</a></li>
+    </ul>
+</nav>
 <table class="tablaEPP">
     <thead>
         <tr>
-            <th>Código</th>
+            <th>DNI</th>
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>Cargo</th>
+            <th>Fecha de Contrato</th>
+            <th>Estado</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        {% for item in epp %}
+        {% for item in workers %}
         <tr>
-            <td>{{ item.idEquipment }}</td>
+            <td>{{ item.dni }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.surname }}</td>
+            <td>{{ item.position }}</td>
+            <td>{{ item.contractDate }}</td>
+            {% if item.status != true %}
+            <td>Activo</td>
+            {% else %}
+            <td>Inactivo</td>
+            {% endif %}
+            <td>
+                <button class="botonAccion">Modificar</button>
+                <button class="botonAccion">Eliminar</button>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<nav class="agregar">
-    <ul>
-        <li><a href="{% url 'add_worker' %}">Agregar Equipo</a></li>
-    </ul>
-</nav>
 {% endblock %}

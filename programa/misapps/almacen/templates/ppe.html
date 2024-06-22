@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}PPE{% endblock %}
+{% load static %}
 
 {% block content %}
 <h2 class="titulo">Equipos de Protección Personal</h2>
+
+<nav class="agregar">
+    <form class="buscar" method="get" action="{% url 'ppe' %}">
+        <input type="text" name="q" placeholder="Buscar por nombre" value="{{ query|default_if_none:'' }}">
+        <button class="buscar" type="submit">Buscar</button>
+    </form> 
+    <ul>
+        <li><a href="{% url 'add_ppe' %}">Agregar Equipo</a></li>
+    </ul>
+</nav>
 <table class="tablaEPP">
     <thead>
         <tr>
@@ -13,6 +24,8 @@
             <th>Costo Unitario</th>
             <th>Costo Total</th>
             <th>Stock</th>
+            <th>Imágen</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -24,13 +37,19 @@
             <td>{{ item.unitCost }}</td>
             <td>{{ item.totalCost }}</td>
             <td>{{ item.stock }}</td>
+            <td>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" style="width: 100px; height: auto;">
+                {% else %}
+                    No hay imagen disponible
+                {% endif %}
+            </td>
+            <td>
+                <button id="modificarbtn" class="botonAccion" type="submit">Modificar</button>
+                <button id="eliminarbtn" class="botonAccion" type="submit">Eliminar</button>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<nav class="agregar">
-    <ul>
-        <li><a href="{% url 'add_ppe' %}">Agregar</a></li>
-    </ul>
-</nav>
 {% endblock %}

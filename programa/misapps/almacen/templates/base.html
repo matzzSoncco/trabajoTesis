@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Inicio{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>Bienvenido</h1>
         <nav class="navegacionCabecera">
             <ul>
                 <li class="listaCabecera"><a href="{% url 'home' %}">Inicio</a></li>
@@ -19,6 +21,7 @@
                     <li class="listaCabecera"><a href="{% url 'material_list' %}">Materiales</a></li>
                     <li class="listaCabecera"><a href="{% url 'equipment_list' %}">Equipos</a></li>
                     <li class="listaCabecera"><a href="{% url 'worker_list' %}">Trabajadores</a></li>
+                    <li class="listaCabecera"><a href="{% url 'loan_list' %}">Asignaciones</a></li>
                     <li class="listaCabecera"><a href="{% url 'exit' %}">Cerrar Sesión</a></li>
                 {% else %}
                     <li class="listaCabecera"><a href="{% url 'login' %}">Iniciar Sesión</a></li>

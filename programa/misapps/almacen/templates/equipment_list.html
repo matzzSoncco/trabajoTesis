@@ -4,6 +4,11 @@
 
 {% block content %}
 <h2 class="titulo">Equipos</h2>
+<nav class="agregar">
+    <ul>
+        <li><a href="{% url 'add_equipment' %}">Agregar Equipo</a></li>
+    </ul>
+</nav>
 <table class="tablaEPP">
     <thead>
         <tr>
@@ -12,23 +17,23 @@
             <th>Cantidad</th>
             <th>Nivel</th>
             <th>Stock</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        {% for item in epp %}
+        {% for item in equipment %}
         <tr>
             <td>{{ item.idEquipment }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.quantity }}</td>
             <td>{{ item.level }}</td>
             <td>{{ item.stock }}</td>
+            <td>
+                <button class="botonAccion">Modificar</button>
+                <button class="botonAccion">Eliminar</button>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<nav class="agregar">
-    <ul>
-        <li><a href="{% url 'add_equipment' %}">Agregar Equipo</a></li>
-    </ul>
-</nav>
 {% endblock %}
