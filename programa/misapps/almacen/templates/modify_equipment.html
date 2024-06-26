@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Modificar{% endblock %}
+
+{% block content %}
+  <h1 class="text-center my-4">Modificar Equipo</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <form method="post" class="p-4 shadow-sm rounded bg-light">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+          <a href="{% url 'equipment_list' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

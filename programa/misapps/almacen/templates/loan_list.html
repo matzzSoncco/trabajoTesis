@@ -1,45 +1,44 @@
 {% extends 'base.html' %}
 
-{% block title %}Loan{% endblock %}
+{% block title %}Préstamos{% endblock %}
 
 {% block content %}
 <h2 class="titulo">Préstamos</h2>
 <nav class="agregar">
+    <form class="buscar" method="get" action="{% url 'loan_list' %}">
+        <input type="text" name="q" placeholder="Buscar por nombre" value="{{ query|default_if_none:'' }}">
+        <button class="buscar" type="submit">Buscar</button>
+    </form>
     <ul>
         <li><a href="{% url 'add_loan' %}">Asignar a Trabajador</a></li>
+        <li class="listaCabecera"><a href="{% url 'material_list' %}">Materiales</a></li>
+        <li class="listaCabecera"><a href="{% url 'tool_list' %}">Herramientas</a></li>
+        <li class="listaCabecera"><a href="{% url 'equipment_list' %}">Equipos</a></li>
     </ul>
 </nav>
 <table class="tablaEPP">
     <thead>
         <tr>
-            <th>DNI Trabajador</th>
             <th>Nombre Trabajador</th>
             <th>Apellido Trabajador</th>
-            <th>Material</th>
-            <th>Herramienta</th>
-            <th>Equipo</th>
-            <th>EPP</th>
+            <th>Codigo de Order de Trabajo</th>
             <th>Fecha asignación</th>
-            <th>Fecha devolución</th>
+            <th>Estado de devolución</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
         {% for item in loans %}
         <tr>
-            <td>{{ item.worker.dni }}</td>
             <td>{{ item.worker.name }}</td>
             <td>{{ item.worker.surname }}</td>
-            <td>{{ item.material.name }}</td>
-            <td>{{ item.tool.name }}</td>
-            <td>{{ item.equipment.name }}</td>
-            <td>{{ item.ppe.name }}</td>
+            <td>{{ item.workOrderCode }}</td>
             <td>{{ item.loanDate }}</td>
-            <td>{{ item.returnLoanDate }}</td>
+            <td>{{ item.status }}</td>
             <td>
-                <button class="botonAccion" id="modificar">Modificar</button>
-                <button class="botonAccion" id="eliminar">Eliminar</button>
-            </td>
+                <button class="botonAccion" id="modificar">Detalles</button>
+                <a href="{% url 'modify_loan' item.idLoan %}" class="btn btn-info editar-btn" data-residuo-id="{{ item.idLoan }}">Editar</a>
+                <a href="{% url 'delete_loan' item.idLoan %}" class="btn btn-danger eliminar-btn" data-residuo-id="{{ item.idLoan }}">Eliminar</a>
         </tr>
         {% endfor %}
     </tbody>

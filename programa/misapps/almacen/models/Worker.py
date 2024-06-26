@@ -8,7 +8,7 @@ class Worker(models.Model):
     contractDate = models.DateField(verbose_name=_('Fecha de Contrato'), default=timezone.now)
     name = models.CharField(verbose_name=_('Nombres'), null=False, max_length=20)
     surname = models.CharField(verbose_name=_('Apellidos'), null=False, max_length=20)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(verbose_name=_('Estado (Activo/Inactivo)'), default=True)
 
     def __str__(self):
         return "%s %s %s" %(self.dni, self.name, self.surname)

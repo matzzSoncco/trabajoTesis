@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar{% endblock %}
+
+{% block content %}
+  <h1>Eliminar Equipo</h1>
+
+  <p>¿Estás seguro que deseas eliminar el Equipo?</p>
+
+  <form method="post" id="deleteForm">
+    {% csrf_token %}
+    <button type="submit" id="deleteButton" class="btn btn-danger">Confirmar Eliminación</button>
+    <a href="{% url 'equipment_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar{% endblock %}
+
+{% block content %}
+  <h1>¿Estás seguro que deseas eliminar esta Entrega?</h1>
+
+  <form method="post" id="deleteForm">
+    {% csrf_token %}
+    <button type="submit" id="deleteButton" class="btn btn-danger">Confirmar Eliminación</button>
+    <a href="{% url 'loan_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}

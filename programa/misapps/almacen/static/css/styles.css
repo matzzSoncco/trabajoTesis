@@ -1,9 +1,9 @@
 /* General styles */
 body {
-    font-family: Arial, sans-serif;
-    background-image: url('../img/almacen.jpg');
-    margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-image: url('../img/almacenfondo.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
 }
 
 body::before {
@@ -11,367 +11,79 @@ body::before {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    filter: blur(10px);
+    right: 0;
+    bottom: 0;
+    background-image: inherit;
+    background-size: inherit;
+    background-repeat: inherit;
+    background-position: inherit;
+    filter: blur(5px); /* Aplica el efecto de desenfoque */
     z-index: -1;
 }
 
-/* Header styles */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+    margin-bottom: 20px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2em;
+/* Navbar styles */
+.navbar {
+    border-bottom: 1px solid #384552;
 }
 
-/* Navigation styles */
-.navegacionCabecera {
-    margin: 20px 0;
-}
-
-.navegacionCabecera ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.navegacionCabecera ul li {
-    margin: 0 15px;
-}
-
-.navegacionCabecera ul li a {
-    text-decoration: none;
-    color: #fff;
+.navbar-brand {
     font-weight: bold;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
 }
 
-.navegacionCabecera ul li a:hover {
-    background-color: #575757;
-    border-radius: 5px;
+.nav-link {
+    color: #343a40;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: #0056b3;
 }
 
 /* Main content styles */
-main {
-    padding: 20px;
-    text-align: center;
-}
-
-/* Estilos para el título de h2 con la clase 'titulo' */
-.titulo {
-    font-size: 2em;
-    font-weight: bold;
-    color: #004085; /* Azul oscuro para el título */
-    text-align: center;
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #f8f9fa; /* Fondo claro */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para dar profundidad */
-    letter-spacing: 1px; /* Espaciado de letras para un mejor aspecto */
-}
-
-/* Styles for the login form */
-.formulario {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5em;
-}
-
-.formulario form {
-    display: flex;
-    flex-direction: column;
-}
-
-.formulario form p {
-    margin-bottom: 15px;
-}
-
-.formulario form input[type="text"],
-.formulario form input[type="email"],
-.formulario form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.formulario .enviar {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.formulario .enviar:hover {
-    background-color: #575757;
-}
-
-/* Styles for a more formal PPE table */
-.tablaEPP {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 1em;
-    min-width: 600px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    border-radius: 20px;
-}
-
-.tablaEPP thead tr {
-    background-color: #004085;
-    color: #fff;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 2px solid #e0e0e0;
-}
-
-.tablaEPP th, .tablaEPP td {
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-}
-
-.tablaEPP tbody tr {
-    border-bottom: 1px solid #e0e0e0;
-    transition: background-color 0.3s ease;
-}
-
-.tablaEPP tbody tr:nth-of-type(even) {
-    background-color: #f2f2f2;
-}
-
-.tablaEPP tbody tr:hover {
-    background-color: #e0e0e0;
-}
-
-.tablaEPP tbody tr:last-of-type {
-    border-bottom: 2px solid #004085;
-}
-
-/* Styles for the 'agregae' navigation */
-.agregar {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.agregar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.agregar ul li {
-    display: inline-block;
-}
-
-.agregar ul li a {
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.agregar ul li a:hover {
-    background-color: #575757;
-}
-
-/* Footer styles */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-}
-
-footer h2 {
-    margin: 0;
-    font-size: 1em;
-}
-
-footer .footer-links {
-    margin: 10px 0;
-}
-
-footer .footer-links a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s;
-}
-
-footer .footer-links a:hover {
-    color: #ff6347; /* Cambia el color al pasar el ratón */
-}
-
-main form {
-    margin-bottom: 20px; /* Margen inferior para separar los formularios */
-}
-
-main h2 {
-    font-size: 1.8em; /* Tamaño de fuente para los títulos dentro del main */
-    margin-bottom: 15px; /* Margen inferior para separar los títulos */
-    color: #007bff; /* Color de texto para los títulos */
-}
-
-main p {
-    line-height: 1.6; /* Altura de línea para mejorar la legibilidad */
-    margin-bottom: 15px; /* Margen inferior para separar los párrafos */
-}
-
-main ul {
-    list-style-type: disc; /* Tipo de viñeta para listas dentro del main */
-    margin-left: 20px; /* Sangría a la izquierda para las listas */
-}
-
-main li {
-    list-style: none;
-    margin-bottom: 10px; /* Margen inferior para separar los elementos de la lista */
-    text-align: left;
-}
-
-main button {
-    background-color: #007bff; /* Color de fondo para los botones */
-    color: white; /* Color de texto para los botones */
-    border: none; /* Sin borde para los botones */
-    padding: 10px 20px; /* Relleno interno para los botones */
-    font-size: 1em; /* Tamaño de fuente para los botones */
-    cursor: pointer; /* Cursor al pasar sobre los botones */
-    border-radius: 5px; /* Bordes redondeados para los botones */
-}
-
-main button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar sobre los botones */
-}
-
-main input[type="text"],
-main input[type="password"],
-main input[type="email"] {
-    width: 100%; /* Ancho completo para los campos de entrada */
-    padding: 10px; /* Relleno interno para los campos de entrada */
-    margin-bottom: 10px; /* Margen inferior para separar los campos de entrada */
-    border: 1px solid #ccc; /* Borde para los campos de entrada */
-    border-radius: 5px; /* Bordes redondeados para los campos de entrada */
-    box-sizing: border-box; /* Incluir el borde en el tamaño total del elemento */
-}
-
-main textarea {
-    width: 100%; /* Ancho completo para los campos de texto */
-    padding: 10px; /* Relleno interno para los campos de texto */
-    margin-bottom: 10px; /* Margen inferior para separar los campos de texto */
-    border: 1px solid #ccc; /* Borde para los campos de texto */
-    border-radius: 5px; /* Bordes redondeados para los campos de texto */
-    box-sizing: border-box; /* Incluir el borde en el tamaño total del elemento */
-}
-
-main select {
-    width: 100%; /* Ancho completo para los campos select */
-    padding: 10px; /* Relleno interno para los campos select */
-    margin-bottom: 10px; /* Margen inferior para separar los campos select */
-    border: 1px solid #ccc; /* Borde para los campos select */
-    border-radius: 5px; /* Bordes redondeados para los campos select */
-    box-sizing: border-box; /* Incluir el borde en el tamaño total del elemento */
-}
-
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Posición fija */
-    z-index: 1; /* Por encima de otros elementos */
-    left: 0;
-    top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Alto completo */
-    overflow: auto; /* Habilita desplazamiento si es necesario */
-    background-color: rgb(0,0,0); /* Color de fondo con transparencia */
-    background-color: rgba(0,0,0,0.4); /* Color de fondo con transparencia */
-}
-
-/* Estilos para el contenido del modal */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* Centrará el modal */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ancho del modal */
-}
-
-/* Estilos para el botón de cerrar */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Estilos generales */
-nav.agregar {
-    display: flex;
-    padding: 10px;
-    border-radius: 5px;
-    justify-content: space-between;
-}
-
-/* Estilos para el formulario de búsqueda */
-form.buscar {
-    display: flex;
-    align-items: flex-start;
-}
-
-form.buscar input[type="text"] {
-    height: fit-content;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-form.buscar button.buscar {
-    height: fit-content;
-    padding: 8px 12px;
-    background-color: #333;
+body {
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-left: 5px;
-    cursor: pointer;
 }
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.titulo,h1 {
+    color: #343a40;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2.5rem; /* Aumenta el tamaño de la fuente */
+    font-weight: 900; /* Hace que la fuente sea muy gruesa */
+    margin-bottom: 20px;
+    padding: 10px; /* Añade un poco de espacio interior */
+    display: inline-block; /* Permite que el borde rodee el texto */
+    background-color: rgba(255, 255, 255, 0.5); /* Añade un fondo semi-transparente para mejorar la visibilidad */
+}
+
+.form-inline .form-control {
+    width: auto;
+}
+
+.table-responsive {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px #0000001a;
+}
+
+thead.thead-dark th {
+    background-color: #343a40;
+    color: white;
+}
+
+.btn-sm {
+    font-size: 0.875em;
+}
+

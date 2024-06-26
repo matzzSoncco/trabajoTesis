@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Préstamos de EPP{% endblock %}
+
+{% block content %}
+<h2 class="titulo">Entrega de EPPs</h2>
+<nav class="agregar">
+    <form class="buscar" method="get" action="{% url 'ppe_loan_list' %}">
+        <input type="text" name="q" placeholder="Buscar por nombre" value="{{ query|default_if_none:'' }}">
+        <button class="buscar" type="submit">Buscar</button>
+    </form>
+    <ul>
+        <li><a href="{% url 'add_ppe_loan' %}">Asignar EPPs</a></li>
+        <li class="listaCabecera"><a href="{% url 'ppe' %}">Volver</a></li>
+    </ul>
+</nav>
+<table class="tablaEPP">
+    <thead>
+        <tr>
+            <th>Nombre Trabajador</th>
+            <th>Apellido Trabajador</th>
+            <th>Fecha asignación</th>
+            <th>Fecha nueva de asignación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in ppe_loans %}
+        <tr>
+            <td>{{ item.worker.name }}</td>
+            <td>{{ item.worker.surname }}</td>
+            <td>{{ item.loanDate }}</td>
+            <td>{{ item.newLoanDate }}</td>
+            <td>
+                <button class="botonAccion" id="modificar">Detalles</button>
+                <a href="{% url 'modify_ppe_loan' item.idPpeLoan %}" class="btn btn-info editar-btn" data-residuo-id="{{ item.idPpeLoan }}">Editar</a>
+                <a href="{% url 'delete_ppe_loan' item.idPpeLoan %}" class="btn btn-danger eliminar-btn" data-residuo-id="{{ item.idPpeLoan }}">Eliminar</a>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

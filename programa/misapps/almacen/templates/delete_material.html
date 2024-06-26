@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Material{% endblock %}
+
+{% block content %}
+  <h1>Eliminar Destino</h1>
+
+  <p>¿Estás seguro que deseas eliminar el destino con ID: {{ item.idMaterial }}?</p>
+
+  <form method="post" id="deleteForm">
+    {% csrf_token %}
+    <button type="submit" id="deleteButton" class="btn btn-danger">Confirmar Eliminación</button>
+    <a href="{% url 'material_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}
